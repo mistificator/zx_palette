@@ -1,0 +1,41 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+
+    // https://github.com/z88dk/z88dk/wiki/WritingOptimalCode
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "palette build zx",
+            "type": "process",
+            "command": "zcc.exe",
+            "args": ["+zx", "-vn", "-lndos", "${workspaceRoot}/palette.c", "-create-app", "-o${workspaceRoot}/../bin/PALETTE.OBJ"],
+            "options": {"env": {"path": "%path%;C:/z88dk/bin/"}},
+            "presentation": {
+                "showReuseMessage": false
+              }
+        },     
+        {
+            "label": "build finish",
+            "type": "shell",            
+            "command": "echo",
+            "args": ["PALETTE build successfully finished"],
+            "presentation": {
+                "showReuseMessage": false
+              }
+        },             
+        {
+            "label": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": ["palette build zx", "build finish"],    
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "showReuseMessage": false
+              }   
+        }  
+
+    ]
+}
