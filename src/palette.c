@@ -55,7 +55,7 @@ void fillPalette() __z88dk_fastcall
 {
     zx_border(INK_BLACK);
     bankm(BANK(5));
-    memset(0xd000, 0, 0x1B00);
+    memset(0xc000, 0, 0x1B00);
     for (int y = 0; y < 16; y++)
     {
         for (int pass = 0; pass < 2; pass++)
@@ -67,7 +67,7 @@ void fillPalette() __z88dk_fastcall
         }
     }
     bankm(BANK(7));
-    memset(0xd000, 0, 0x1B00);
+    memset(0xc000, 0, 0x1B00);
     for (int x = 0; x < 16; x++)
     {
         for (int pass = 0; pass < 2; pass++)
